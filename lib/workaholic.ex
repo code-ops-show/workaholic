@@ -13,9 +13,16 @@ defmodule Workaholic do
 
   """
 
+  def block_world do
+    Enum.map(1..100, fn i ->
+      :timer.sleep(500)
+      1 + 5
+    end)
+  end
+
   def in_tasks do
-    Enum.map(1..100, fn i -> 
-      Task.async(fn -> 
+    Enum.map(1..100, fn i ->
+      Task.async(fn ->
         :timer.sleep(500)
         1 + 5
       end)
@@ -23,14 +30,7 @@ defmodule Workaholic do
   end
 
   def in_task_async_stream do
-    Task.async_stream(1..100, fn i -> 
-      :timer.sleep(500)
-      1 + 5
-    end)
-  end
-
-  def block_world do
-    Enum.map(1..100, fn i -> 
+    Task.async_stream(1..100, fn i ->
       :timer.sleep(500)
       1 + 5
     end)
